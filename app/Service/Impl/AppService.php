@@ -371,15 +371,6 @@ class AppService implements App
     }
 
     /**
-     * @return array
-     * @throws JSONException
-     */
-    public function ad(): array
-    {
-        return (array)$this->post("/open/project/ad", ["key" => "faka"]);
-    }
-
-    /**
      * @throws JSONException
      */
     public function install(): void

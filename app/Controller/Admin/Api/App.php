@@ -47,14 +47,6 @@ class App extends Manage
         return $this->json(200, "升级完成");
     }
 
-    /**
-     * @return array
-     */
-    public function ad(): array
-    {
-        return $this->json(200, "ok", $this->app->ad());
-    }
-
 
     /**
      * @throws JSONException

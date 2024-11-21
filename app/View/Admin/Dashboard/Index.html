@@ -11,27 +11,7 @@
         <!--begin::Container-->
         <div id="kt_content_container" class="container-fluid">
             <div class="row">
-                <div class="col-4">
-                    <!--begin::Tasks-->
-                    <div class="card card-flush h-lg-100">
-                        <!--begin::Card header-->
-                        <div class="card-header mt-6">
-                            <!--begin::Card title-->
-                            <div class="card-title flex-column">
-                                <h3 class="fw-bolder mb-1" style="color: #e6a0ef;">官方公告</h3>
-                            </div>
-                            <!--end::Card title-->
-                        </div>
-                        <!--end::Card header-->
-                        <!--begin::Card body-->
-                        <div class="card-body d-flex flex-column mb-9 p-9 pt-3 ad-html">
-                        </div>
-                        <!--end::Card body-->
-                    </div>
-                    <!--end::Tasks-->
-                </div>
-
-                <div class="col-8">
+                <div class="col-12">
                     <!--begin::Navbar-->
                     <div class="card mb-6">
                         <div class="card-body pt-9 pb-0">
@@ -532,37 +512,7 @@
 </div>
 <!--end::Content-->
 
-
-<!--begin::Item -MODEL-->
-<div class="ad-item-model" style="display: none;">
-    <div class="d-flex align-items-center position-relative mb-7">
-        <!--begin::Label-->
-        <div class="position-absolute top-0 start-0 rounded h-100 bg-secondary w-4px"></div>
-        <!--end::Label-->
-        <!--begin::Details-->
-        <div class="fw-bold ms-3">
-            <a href="[url]" [target] class="fs-6 fw-bolder text-hover-primary" style="color: #b593a4;">[title]</a>
-            <!--begin::Info-->
-            <div class="text-gray-400 mt-1">[create_time]</div>
-            <!--end::Info-->
-        </div>
-        <!--end::Details-->
-    </div>
-</div>
-<!--end::Item-->
-
 <script>
-    $.get("/admin/api/app/ad", res => {
-        if (res.code != 200) {
-            return;
-        }
-        let html = "";
-        res.data.forEach(item => {
-            html += $('.ad-item-model').html().replace("[title]", item.title).replace("[create_time]", item.create_date).replace("[url]", item.url ? item.url : "javascript:void(0)").replace("[target]", item.url ? 'target="_blank"' : '');
-        });
-        $('.ad-html').append(html);
-    });
-
     $(function () {
         layui.use('layer', function () {
 

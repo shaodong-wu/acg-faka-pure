@@ -33,12 +33,6 @@ interface App
      */
     public function upload(array $data): array;
 
-
-    /**
-     * @return array
-     */
-    public function ad(): array;
-
     /**
      *
      */
