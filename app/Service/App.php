@@ -19,16 +19,6 @@ interface App
     const GENERAL_SERVER = "https://general.acgshe.com";
 
     /**
-     * @return array
-     */
-    public function getVersions(): array;
-
-    /**
-     * 升级
-     */
-    public function update(): void;
-
-    /**
      *
      */
     public function upload(array $data): array;
