@@ -332,29 +332,6 @@ class AppService implements App
     }
 
     /**
-     * @param array $data
-     * @return array
-     * @throws GuzzleException
-     * @throws JSONException
-     */
-    public function developerPlugins(array $data): array
-    {
-        return $this->storeRequest("/developer/plugins", $data);
-    }
-
-
-    /**
-     * @param array $data
-     * @return array
-     * @throws GuzzleException
-     * @throws JSONException
-     */
-    public function developerCreatePlugin(array $data): array
-    {
-        return $this->storeRequest("/developer/create", $data);
-    }
-
-    /**
      * @throws GuzzleException
      * @throws JSONException
      */
@@ -366,27 +343,6 @@ class AppService implements App
             "plugin_id" => $pluginId,
             "return" => \App\Util\Client::getUrl() . "/admin/store/home"
         ]);
-    }
-
-    /**
-     * @param array $data
-     * @return array
-     * @throws GuzzleException
-     * @throws JSONException
-     */
-    public function developerCreateKit(array $data): array
-    {
-        return $this->storeRequest("/developer/createKit", $data);
-    }
-
-
-    /**
-     * @throws GuzzleException
-     * @throws JSONException
-     */
-    public function developerDeletePlugin(array $data): array
-    {
-        return $this->storeRequest("/developer/deletePlugin", $data);
     }
 
     /**
@@ -410,28 +366,6 @@ class AppService implements App
             throw new JSONException($res['msg']);
         }
         return $res['data'];
-    }
-
-    /**
-     * @param array $data
-     * @return array
-     * @throws GuzzleException
-     * @throws JSONException
-     */
-    public function developerUpdatePlugin(array $data): array
-    {
-        return $this->storeRequest("/developer/createUpdate", $data);
-    }
-
-    /**
-     * @param array $data
-     * @return array
-     * @throws GuzzleException
-     * @throws JSONException
-     */
-    public function developerPluginPriceSet(array $data): array
-    {
-        return $this->storeRequest("/developer/priceSet", $data);
     }
 
     /**
