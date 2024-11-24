@@ -51,8 +51,6 @@ abstract class Manage extends \App\Controller\Base\Manage
                 };
             }
 
-            $data['_store_initialize'] = file_exists(BASE_PATH . "/kernel/Plugin.php");
-
             return View::render('Admin/' . $template, $data);
         } catch (\SmartyException $e) {
             throw new ViewException($e->getMessage());

@@ -6,6 +6,7 @@ namespace App\Consts;
 
 interface Plugin
 {
+    const ICON = "ICON";
     const NAME = "NAME";
     const AUTHOR = "AUTHOR";
     const WEB_SITE = "WEB_SITE";

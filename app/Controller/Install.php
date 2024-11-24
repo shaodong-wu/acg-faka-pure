@@ -131,11 +131,6 @@ class Install extends User
         unlink($sqlFile . ".tmp");
         file_put_contents(BASE_PATH . '/kernel/Install/Lock', "");
 
-        try {
-            $this->app->install();
-        } catch (\Exception|\Error $e) {
-        }
-
         return $this->json(200, '安装完成');
     }
 }

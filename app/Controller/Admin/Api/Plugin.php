@@ -22,7 +22,6 @@ class Plugin extends Manage
     public function getPlugins(): array
     {
         $plugins = \Kernel\Util\Plugin::getPlugins(\Kernel\Util\Plugin::isCache());
-        $appStore = (array)json_decode((string)file_get_contents(BASE_PATH . "/runtime/plugin/store.cache"), true);
         $path = BASE_PATH . "/app/Plugin/";
 
         $keywords = urldecode((string)$_POST['keywords']);
@@ -30,10 +29,10 @@ class Plugin extends Manage
 
         foreach ($plugins as $key => $plugin) {
             $plugins[$key]["id"] = $plugin[\App\Consts\Plugin::PLUGIN_NAME];
-            if (!array_key_exists($plugins[$key]["id"], $appStore)) {
+            if (empty($plugins[$key][\App\Consts\Plugin::ICON])) {
                 $plugins[$key]['icon'] = "/favicon.ico";
             } else {
-                $plugins[$key]['icon'] = \App\Service\App::APP_URL . $appStore[$plugins[$key]["id"]]['icon'];
+                $plugins[$key]['icon'] = $plugins[$key][\App\Consts\Plugin::ICON];
             }
             //判断文档是否存在
             if (file_exists($path . $plugins[$key]["id"] . "/Wiki/Index.html")) {

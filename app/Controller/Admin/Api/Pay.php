@@ -100,12 +100,11 @@ class Pay extends Manage
     public function getPlugins(): array
     {
         $plugins = $this->pay->getPlugins();
-        $appStore = (array)json_decode((string)file_get_contents(BASE_PATH . "/runtime/plugin/store.cache"), true);
         foreach ($plugins as $index => $plugin) {
-            if (!array_key_exists($plugin["id"], $appStore)) {
+            if (empty($plugin['info']['icon'])) {
                 $plugins[$index]['icon'] = "/favicon.ico";
             } else {
-                $plugins[$index]['icon'] = \App\Service\App::APP_URL . $appStore[$plugin["id"]]['icon'];
+                $plugins[$index]['icon'] = $plugin['info']['icon'];
             }
         }
 
