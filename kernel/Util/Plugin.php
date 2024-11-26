@@ -164,12 +164,13 @@ class Plugin
      */
     public static function hook(int $point, mixed &...$args)
     {
-        if (Context::get(\Kernel\Consts\Base::STORE_STATUS) && \Kernel\Util\Context::get(\Kernel\Consts\Base::IS_INSTALL)) {
-            $list = _Point($point);
+        if (\Kernel\Util\Context::get(\Kernel\Consts\Base::IS_INSTALL)) {
+            $list = self::$container['hook'][$point];
             foreach ($list as $item) {
-                $instance = _Instance($item);
-                $ref = new \ReflectionClass($instance);
-                $reflectionProperties = $ref->getProperties();
+                Plugin::$currentPluginName = $item['pluginName'];
+                $reflectionClass = new \ReflectionClass($item["namespace"]);
+                $reflectionProperties = $reflectionClass->getProperties();
+                $instance = $reflectionClass->newInstance();
                 foreach ($reflectionProperties as $property) {
                     $reflectionProperty = new \ReflectionProperty($instance, $property->getName());
                     $reflectionPropertiesAttributes = $reflectionProperty->getAttributes();
@@ -194,7 +195,7 @@ class Plugin
      */
     public static function getHookNum(int $point): int
     {
-        return (int)count((array)self::$container[$point]);
+        return (int)count((array)self::$container['hook'][$point]);
     }
 
     /**
