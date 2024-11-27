@@ -188,7 +188,7 @@ class Store extends Manage
                     $commodity->user_price = $item['price'] + ($premium * $item['price']);
                 }
 
-                $commodity->cover = $shared->domain . $item['cover'];
+                $commodity->cover = preg_match("/^http[s]?/", $item['cover']) ? $item['cover'] : $shared->domain . $item['cover'];
                 $commodity->factory_price = $item['factory_price'];
                 $commodity->status = $shelves;
                 $commodity->owner = 0;
