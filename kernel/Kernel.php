@@ -17,7 +17,6 @@ try {
 
     $s = explode("/", trim((string)$_GET['s'], '/'));
     \Kernel\Util\Context::set(\Kernel\Consts\Base::ROUTE, "/" . implode("/", $s));
-    \Kernel\Util\Context::set(\Kernel\Consts\Base::LOCK, (string)file_get_contents(BASE_PATH . "/kernel/Install/Lock"));
     \Kernel\Util\Context::set(\Kernel\Consts\Base::IS_INSTALL, file_exists(BASE_PATH . '/kernel/Install/Lock'));
     \Kernel\Util\Context::set(\Kernel\Consts\Base::OPCACHE, extension_loaded("Zend OPcache") || extension_loaded("opcache"));
 
