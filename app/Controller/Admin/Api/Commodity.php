@@ -74,6 +74,15 @@ class Commodity extends Manage
         $clientUrl = Client::getUrl();
         foreach ($data['data'] as $key => $val) {
             $url = $clientUrl;
+
+            if (!$data['data'][$key]['cover']) {
+                $data['data'][$key]['cover'] = "/favicon.ico";
+            }
+
+            if (!$data['data'][$key]['category']['icon']) {
+                $data['data'][$key]['category']['icon'] = "/favicon.ico";
+            }
+
             if ($val['owner'] && $val['owner']['business']) {
 
                 if ($val['owner']['business']['subdomain']) {
